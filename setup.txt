@@ -1,0 +1,10 @@
+JDK 8
+check JAVA_HOME Path is set to jdk 8
+
+Adding SSH Key
+https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/
+
+Config on local machine
+git config user.name "lastname, firstname"
+
+git config user.email your.email@gmail.com

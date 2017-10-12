@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/transactwebapp.iml" filepath="$PROJECT_DIR$/.idea/modules/transactwebapp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/transactwebapp_main.iml" filepath="$PROJECT_DIR$/.idea/modules/transactwebapp_main.iml" group="transactwebapp" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/transactwebapp_test.iml" filepath="$PROJECT_DIR$/.idea/modules/transactwebapp_test.iml" group="transactwebapp" />
+    </modules>
+  </component>
+</project>

@@ -1,4 +1,4 @@
-package entry;
+package com.transact.main.test_module;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,7 +9,7 @@ public class PageController {
 
 	@RequestMapping("/")
 	public ModelAndView loginPage() {
-		return new ModelAndView("login");
+		return new ModelAndView("com/transact/main/login");
 	}
 
 	@RequestMapping("/welcome.html")
@@ -17,7 +17,7 @@ public class PageController {
 		return new ModelAndView("welcome");
 	}
 
-	@RequestMapping("/entry")
+	@RequestMapping("/com/transact/main/test_module")
 	public ModelAndView helloWorld() {
 		String message = "HELLO SPRING MVC HOW R U";
 		return new ModelAndView("hellopage", "message", message);

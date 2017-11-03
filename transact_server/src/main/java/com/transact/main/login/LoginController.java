@@ -1,4 +1,4 @@
-package login;
+package com.transact.main.login;
 
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -17,9 +17,9 @@ public class LoginController {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ResponseEntity<User> login(@RequestBody User user) {
         if (user == null) {
-            System.out.println("User object is null, can login ");
+            System.out.println("User object is null, can com.transact.main.login ");
         }
-        System.out.println("Trying to login");
+        System.out.println("Trying to com.transact.main.login");
 
         User user2= new User();
         user2.setDisplay_name("Sandeep");

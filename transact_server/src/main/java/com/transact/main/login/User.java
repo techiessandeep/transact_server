@@ -1,7 +1,4 @@
-package login;
-
-import javax.jws.soap.SOAPBinding;
-import java.sql.Date;
+package com.transact.main.login;
 
 /**
  * Created by patilsp on 10/12/2017.

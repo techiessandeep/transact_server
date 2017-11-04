@@ -19,14 +19,35 @@ public class LoginController {
         if (user == null) {
             System.out.println("User object is null, can com.transact.main.login ");
         }
-        System.out.println("Trying to com.transact.main.login");
 
-        User user2= new User();
-        user2.setDisplay_name("Sandeep");
-        user2.setEmail_id("san27deep");
-        user2.setLogin_type(User.LOGIN_TYPE.FB);
+        System.out.println("User trying to login");
+        user.setDisplay_name("Patil, Sandeep");
+
         return new ResponseEntity<User>(user, HttpStatus.OK);
     }
+
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public ResponseEntity<User> register(@RequestBody User user) {
+        if (user == null) {
+            System.out.println("User object is null, can com.transact.main.login ");
+        }
+
+        System.out.println("User trying to Register");
+
+        return new ResponseEntity<User>(user, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    public ResponseEntity<User> updateMobileNumber(@RequestBody User user) {
+        if (user == null) {
+            System.out.println("User object is null, can com.transact.main.login ");
+        }
+
+        System.out.println("User trying to update profile");
+
+        return new ResponseEntity<User>(user, HttpStatus.OK);
+    }
+
 
     @RequestMapping(value = "/{greeting}", method = RequestMethod.GET)
     public User greeting(@RequestParam(value = "name", defaultValue = "World") String name) {

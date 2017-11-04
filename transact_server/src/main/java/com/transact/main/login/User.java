@@ -18,7 +18,9 @@ public class User {
     String created_at;
     String updated_at;
     String profile_photo_url;
-    LOGIN_TYPE login_type; // FB<, GMAIL, OTHER
+    String date_of_birth;
+    GENDER gender;
+    LOGIN_TYPE login_type; // FB, GMAIL, OTHER
     char has_special_accesses;
     char has_cart;
     char is_active;
@@ -28,6 +30,11 @@ public class User {
         FB,
         GMAIL,
         OTHER
+    }
+
+    enum GENDER{
+        MALE,
+        FEMALE
     }
 
     public User()

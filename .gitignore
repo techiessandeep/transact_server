@@ -1,0 +1,4 @@
+transact_server/build/*
+transact_server/.idea/*
+transact_server/out/*
+transact_server/.gradle/*

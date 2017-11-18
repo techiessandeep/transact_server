@@ -12,14 +12,34 @@ public class Room implements Serializable {
     private int room_id;
     private int house_id;
     private String room_name;
+    private int device_id;
+    private boolean is_emulated_room;
 
     public Room() {
     }
 
-    public Room(int room_id, int house_id, String room_name) {
+    public Room(int room_id, int house_id, String room_name, int device_id, boolean is_emulated_room) {
         this.room_id = room_id;
         this.house_id = house_id;
         this.room_name = room_name;
+        this.device_id = device_id;
+        this.is_emulated_room = is_emulated_room;
+    }
+
+    public int getDevice_id() {
+        return device_id;
+    }
+
+    public void setDevice_id(int device_id) {
+        this.device_id = device_id;
+    }
+
+    public boolean isIs_emulated_room() {
+        return is_emulated_room;
+    }
+
+    public void setIs_emulated_room(boolean is_emulated_room) {
+        this.is_emulated_room = is_emulated_room;
     }
 
     public static int getRoomIdNotRequired() {

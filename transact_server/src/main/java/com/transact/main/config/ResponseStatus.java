@@ -13,8 +13,8 @@ public class ResponseStatus {
     public enum RESPONSE {
         e_PERIPHERALS_LIST_UPDATED_SUCCESSFULLY,
         e_ROOM_INFORMATION_UPDATED_SUCCESSFULLY,
-        e_NEW_ROOM_CREATED
-    }
+        e_NEW_ROOM_CREATED,
+        }
 
     public void setResponse(RESPONSE response) {
         this.response = response;

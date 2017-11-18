@@ -1,21 +1,19 @@
 package com.transact.main.smart_home;
 
-import com.transact.main.config.*;
 import com.transact.main.config.ResponseStatus;
 import com.transact.main.login.User;
-import com.transact.main.smart_home.beans.House;
-import com.transact.main.smart_home.beans.Peripheral;
-import com.transact.main.smart_home.beans.Room;
-import com.transact.main.smart_home.beans.SmartHomeCollector;
+import com.transact.main.smart_home.beans.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicLong;
-
 
 @RestController
 @RequestMapping("/smart_home")
@@ -121,6 +119,38 @@ public class SmartHomeController {
 
         return new ResponseEntity<Peripheral>(peripheral, HttpStatus.OK);
     }
+
+    @RequestMapping(value = "/remove_user_sh_access", method = RequestMethod.POST)
+    public ResponseEntity<SHUser> removeUserAccess(@RequestBody @Valid @NotNull SHUser user) {
+
+        ResponseStatus status=new ResponseStatus();
+        System.out.println("Removing user from smart home ::"+user);
+     //   SmartHomeCollector.getHomeCollectorObj(123).getAlUsers().remove(user);
+
+        for (int i = 0; i < SmartHomeCollector.getHomeCollectorObj(123).getAlUsers().size(); i++) {
+            if (SmartHomeCollector.getHomeCollectorObj(123).getAlUsers().get(i).getMobile_number().equals(user.getMobile_number())) {
+                SmartHomeCollector.getHomeCollectorObj(123).getAlUsers().remove(i);
+                break;
+            }
+        }
+
+        System.out.println("Remainig users:: "+SmartHomeCollector.getHomeCollectorObj(123).getAlUsers());
+
+        return new ResponseEntity<SHUser>(user, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/add_user_sh_access", method = RequestMethod.POST)
+    public ResponseEntity<SHUser> addUserAccess(@RequestBody @Valid @NotNull SHUser user) {
+
+
+        System.out.println("Adding user from smart home ::"+user);
+        SmartHomeCollector.getHomeCollectorObj(123).getAlUsers().add(user);
+
+        System.out.println("All users:: "+SmartHomeCollector.getHomeCollectorObj(123).getAlUsers());
+
+        return new ResponseEntity<SHUser>(user, HttpStatus.OK);
+    }
+
 
     /*@RequestMapping(value = "/update_peripheral_status", method = RequestMethod.POST, consumes = {"multipart/form-data"})
     @ResponseBody

@@ -11,7 +11,8 @@ public class House {
     private String house_name;
     private int owner_id;
     private String authentication_code;
-
+    private boolean has_multi_users;
+    
     public House() {
     }
 

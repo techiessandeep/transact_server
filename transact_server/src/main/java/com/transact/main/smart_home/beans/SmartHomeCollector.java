@@ -12,6 +12,17 @@ public class SmartHomeCollector {
     private ArrayList<Room> alRooms;
     private ArrayList<Peripheral> alPeripherals;
 
+    private ArrayList<Device> alDevices = new ArrayList<>();
+    private ArrayList<SHUser> alUsers = new ArrayList<>();
+
+    public ArrayList<Device> getAlDevices() {
+        return alDevices;
+    }
+
+    public ArrayList<SHUser> getAlUsers() {
+        return alUsers;
+    }
+
     private static SmartHomeCollector homeCollector;
 
     public House getHouse() {
@@ -51,7 +62,7 @@ public class SmartHomeCollector {
             homeCollector.setHouse(house);
             homeCollector.setAlRooms(new ArrayList<>());
 
-            Room room1 = new Room(1, 123, "Hall");
+            Room room1 = new Room(1, 123, "Hall", 101, false);
 
             ArrayList<Peripheral> al_peripherals = new ArrayList<>();
             al_peripherals.add(new Peripheral(1, 1, Peripheral.PERIPHERAL_TYPE.BULB, "BULB 1", Peripheral.Status.OFF, 100, false));
@@ -78,24 +89,36 @@ public class SmartHomeCollector {
         Peripheral p6 =new Peripheral(room1, Peripheral.PERIPHERAL_TYPE.BULB, "BULB 4", Peripheral.Status.ON, 100);
 */
 
-            Room room2 = new Room(2, 123, "Kitchen");
+            Room room2 = new Room(2, 123, "Kitchen", 101, true);
 
-            Room room3 = new Room(3, 123, "Sans Room");
+            Room room3 = new Room(3, 123, "Sans Room", 102, false);
 
-            Room room4 = new Room(4, 123, "Govinds Room");
+            Room room4 = new Room(4, 123, "Govinds Room", 102, true);
 
-            Room room5 = new Room(5, 123, "Kapil & Vijen Room");
+            Room room5 = new Room(5, 123, "Kapil & Vijen Room", 103, false);
 
             homeCollector.getAlRooms().add(room1);
             homeCollector.getAlRooms().add(room2);
             homeCollector.getAlRooms().add(room3);
-            //    house.rooms.add(room4);
-            //   house.rooms.add(room5);
+            homeCollector.getAlRooms().add(room4);
+            homeCollector.getAlRooms().add(room5);
+
+            //  public Device(int device_id, int house_id, String device_phy_id, String dev_mac_addr, String local_ip_addr) {
+            ArrayList<Device> alDevices = new ArrayList<>();
+            homeCollector.getAlDevices().add(new Device(101, 123, "phy1", "23:32:23:23", "192.168.1.4"));
+            homeCollector.getAlDevices().add(new Device(102, 123, "phy2", "23:32:23:24", "192.168.1.5"));
+            homeCollector.getAlDevices().add(new Device(103, 123, "phy3", "23:32:23:25", "192.168.1.6"));
+
+            homeCollector.getAlUsers().add(new SHUser(123, "123", "Sandeep"));
+            homeCollector.getAlUsers().add(new SHUser(123, "123", "Gov"));
+            homeCollector.getAlUsers().add(new SHUser(123, "123", "Vij"));
+            homeCollector.getAlUsers().add(new SHUser(123, "123", "Kapil"));
+
         }
 
-            return homeCollector;
+        return homeCollector;
 
-
-        }
 
     }
+
+}

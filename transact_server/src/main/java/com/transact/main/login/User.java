@@ -40,6 +40,8 @@ public class User implements Serializable {
     char has_cart;
     char is_active;
 
+    String notification_token;
+
     public enum LOGIN_TYPE
     {
         FB,

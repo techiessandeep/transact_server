@@ -139,6 +139,8 @@ public class SmartHomeController {
         return new ResponseEntity<SHUser>(user, HttpStatus.OK);
     }
 
+
+
     @RequestMapping(value = "/add_user_sh_access", method = RequestMethod.POST)
     public ResponseEntity<SHUser> addUserAccess(@RequestBody @Valid @NotNull SHUser user) {
 

@@ -1,9 +1,24 @@
 package com.transact.main.login;
 
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import java.io.Serializable;
+
 /**
  * Created by patilsp on 10/12/2017.
  */
-public class User {
+@Entity
+public class User implements Serializable {
+
+    private static final long serialVersionUID = -8999330441474696575L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
+
     int user_id;
     String primary_mobile_number;
     String display_name;
@@ -61,6 +76,14 @@ public class User {
         this.has_special_accesses = has_special_accesses;
         this.has_cart = has_cart;
         this.is_active = is_active;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public int getUser_id() {

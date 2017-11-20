@@ -123,9 +123,9 @@ public class SmartHomeController {
     @RequestMapping(value = "/remove_user_sh_access", method = RequestMethod.POST)
     public ResponseEntity<SHUser> removeUserAccess(@RequestBody @Valid @NotNull SHUser user) {
 
-        ResponseStatus status=new ResponseStatus();
-        System.out.println("Removing user from smart home ::"+user);
-     //   SmartHomeCollector.getHomeCollectorObj(123).getAlUsers().remove(user);
+        ResponseStatus status = new ResponseStatus();
+        System.out.println("Removing user from smart home ::" + user);
+        //   SmartHomeCollector.getHomeCollectorObj(123).getAlUsers().remove(user);
 
         for (int i = 0; i < SmartHomeCollector.getHomeCollectorObj(123).getAlUsers().size(); i++) {
             if (SmartHomeCollector.getHomeCollectorObj(123).getAlUsers().get(i).getMobile_number().equals(user.getMobile_number())) {
@@ -134,7 +134,7 @@ public class SmartHomeController {
             }
         }
 
-        System.out.println("Remainig users:: "+SmartHomeCollector.getHomeCollectorObj(123).getAlUsers());
+        System.out.println("Remainig users:: " + SmartHomeCollector.getHomeCollectorObj(123).getAlUsers());
 
         return new ResponseEntity<SHUser>(user, HttpStatus.OK);
     }
@@ -142,11 +142,10 @@ public class SmartHomeController {
     @RequestMapping(value = "/add_user_sh_access", method = RequestMethod.POST)
     public ResponseEntity<SHUser> addUserAccess(@RequestBody @Valid @NotNull SHUser user) {
 
-
-        System.out.println("Adding user from smart home ::"+user);
+        System.out.println("Adding user from smart home ::" + user);
         SmartHomeCollector.getHomeCollectorObj(123).getAlUsers().add(user);
 
-        System.out.println("All users:: "+SmartHomeCollector.getHomeCollectorObj(123).getAlUsers());
+        System.out.println("All users:: " + SmartHomeCollector.getHomeCollectorObj(123).getAlUsers());
 
         return new ResponseEntity<SHUser>(user, HttpStatus.OK);
     }

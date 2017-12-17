@@ -15,6 +15,8 @@ import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicLong;
 
+import static com.transact.main.config.ResponseStatus.RESPONSE.e_DEVICE_MAC_STORE_SUCCESS;
+
 @RestController
 @RequestMapping("/smart_home")
 public class SmartHomeController {
@@ -30,9 +32,24 @@ public class SmartHomeController {
         }
 
 
-        System.out.println("User trying to get house details");
+        System.out.println("User trying to get house details :: " + user);
 
         return new ResponseEntity<SmartHomeCollector>(SmartHomeCollector.getHomeCollectorObj(user.getUser_id()), HttpStatus.OK);
+    }
+
+
+    @RequestMapping(value = "/has_house", method = RequestMethod.POST)
+    public ResponseEntity<ResponseStatus> hasHouse(@RequestBody User user) {
+
+        System.out.println("User trying to check for Smart home existence :: " + user);
+
+        ResponseStatus status = new ResponseStatus();
+        if (user.getPrimary_mobile_number().equals("9964779834"))
+            status.setResponse(ResponseStatus.RESPONSE.e_HAS_SMART_HOME);
+        else
+            status.setResponse(ResponseStatus.RESPONSE.e_DOES_NOT_HAVE_SMART_HOME);
+
+        return new ResponseEntity<ResponseStatus>(status, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/update_peripherals", method = RequestMethod.POST)
@@ -140,7 +157,6 @@ public class SmartHomeController {
     }
 
 
-
     @RequestMapping(value = "/add_user_sh_access", method = RequestMethod.POST)
     public ResponseEntity<SHUser> addUserAccess(@RequestBody @Valid @NotNull SHUser user) {
 
@@ -153,17 +169,4 @@ public class SmartHomeController {
     }
 
 
-    /*@RequestMapping(value = "/update_peripheral_status", method = RequestMethod.POST, consumes = {"multipart/form-data"})
-    @ResponseBody
-    public ResponseEntity<Peripheral> updatePeripheralStatus(@RequestPart("room") @Valid Room room,
-                                                             @RequestPart("peripheral") @Valid @NotNull Peripheral peripheral) {
-
-        if (peripheral.getPer_type() == Peripheral.PERIPHERAL_TYPE.MAIN_SWITCH) {
-            System.out.println("Room object is not important, switching MAIN Switch");
-        }
-
-        System.out.println("User trying to update peripheral details :: " + peripheral);
-        System.out.println("User trying to update room details :: " + room);
-        return new ResponseEntity<Peripheral>(peripheral, HttpStatus.OK);
-    }*/
 }

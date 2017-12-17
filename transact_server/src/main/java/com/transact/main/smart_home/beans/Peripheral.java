@@ -18,9 +18,12 @@ public class Peripheral implements Serializable {
     private Status per_status;
     private int per_value;
     private boolean per_is_in_quick_access;
+    private boolean has_updates;
 
     private String per_phy_id;
     private int parent_device_id;
+
+    private String last_updated_by_user;
 
     public Peripheral() {
     }

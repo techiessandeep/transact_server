@@ -15,11 +15,11 @@ public class User implements Serializable {
 
     private static final long serialVersionUID = -8999330441474696575L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
 
-    int user_id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    Integer user_id;
+
+    @Id
     String primary_mobile_number;
     String display_name;
     String first_name;
@@ -80,13 +80,6 @@ public class User implements Serializable {
         this.is_active = is_active;
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public int getUser_id() {
         return user_id;
@@ -230,5 +223,32 @@ public class User implements Serializable {
 
     public void setIs_active(char is_active) {
         this.is_active = is_active;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                ", user_id=" + user_id +
+                ", primary_mobile_number='" + primary_mobile_number + '\'' +
+                ", display_name='" + display_name + '\'' +
+                ", first_name='" + first_name + '\'' +
+                ", family_name='" + family_name + '\'' +
+                ", email_id='" + email_id + '\'' +
+                ", pan_number='" + pan_number + '\'' +
+                ", pan_document='" + pan_document + '\'' +
+                ", gst_document='" + gst_document + '\'' +
+                ", country_code='" + country_code + '\'' +
+                ", password='" + password + '\'' +
+                ", created_at='" + created_at + '\'' +
+                ", updated_at='" + updated_at + '\'' +
+                ", profile_photo_url='" + profile_photo_url + '\'' +
+                ", date_of_birth='" + date_of_birth + '\'' +
+                ", gender=" + gender +
+                ", login_type=" + login_type +
+                ", has_special_accesses=" + has_special_accesses +
+                ", has_cart=" + has_cart +
+                ", is_active=" + is_active +
+                ", notification_token='" + notification_token + '\'' +
+                '}';
     }
 }

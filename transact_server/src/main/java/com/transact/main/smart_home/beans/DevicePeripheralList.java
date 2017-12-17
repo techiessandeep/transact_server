@@ -1,21 +1,24 @@
 package com.transact.main.smart_home.beans;
 
+import java.util.ArrayList;
+
 /**
  * Created by patilsp on 11/13/2017.
  */
 
-public class Device {
+public class DevicePeripheralList {
+
     private int device_id;
     private int house_id;
     private String device_phy_id;
     private String dev_mac_addr;
     private String local_ip_addr;
-    private boolean has_updates;
 
-    public Device() {
+    public ArrayList<PhyPeripheral> alPeripherals;
+    public DevicePeripheralList() {
     }
 
-    public Device(int device_id, int house_id, String device_phy_id, String dev_mac_addr, String local_ip_addr) {
+    public DevicePeripheralList(int device_id, int house_id, String device_phy_id, String dev_mac_addr, String local_ip_addr) {
         this.device_id = device_id;
         this.house_id = house_id;
         this.device_phy_id = device_phy_id;
@@ -45,12 +48,13 @@ public class Device {
 
     @Override
     public String toString() {
-        return "Device{" +
+        return "DevicePeripheralList{" +
                 "device_id=" + device_id +
                 ", house_id=" + house_id +
                 ", device_phy_id='" + device_phy_id + '\'' +
                 ", dev_mac_addr='" + dev_mac_addr + '\'' +
                 ", local_ip_addr='" + local_ip_addr + '\'' +
+                ", alPeripherals=" + alPeripherals +
                 '}';
     }
 }

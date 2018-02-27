@@ -19,6 +19,7 @@ import java.util.concurrent.atomic.AtomicLong;
 @RequestMapping("/smart_home/device")
 public class SmartHomeHWDeviceController {
 
+    private final AtomicLong counterIntenity = new AtomicLong();
 
     @RequestMapping(value = "/get_updates", method = RequestMethod.POST)
     public ResponseEntity<ArrayList<PhyPeripheral>> getUpdates(@RequestBody Device device) {
@@ -29,23 +30,14 @@ public class SmartHomeHWDeviceController {
         //if(device is not registered already then register it after authenticating. )
         //if user requested for some updates then get create one peripheral object and add it as a 1st element in arraylist.
         ArrayList<PhyPeripheral> alPeripherals = new ArrayList<>();
-        alPeripherals.add(new PhyPeripheral());
-        alPeripherals.add(new PhyPeripheral());
-        alPeripherals.add(new PhyPeripheral());
-        alPeripherals.add(new PhyPeripheral());
-        alPeripherals.add(new PhyPeripheral());
-        alPeripherals.add(new PhyPeripheral());
-        alPeripherals.add(new PhyPeripheral());
-        alPeripherals.add(new PhyPeripheral());
-        alPeripherals.add(new PhyPeripheral());
-        alPeripherals.add(new PhyPeripheral());
-        alPeripherals.add(new PhyPeripheral());
-        alPeripherals.add(new PhyPeripheral());
-        alPeripherals.add(new PhyPeripheral());
-        alPeripherals.add(new PhyPeripheral());
-        alPeripherals.add(new PhyPeripheral());
-        alPeripherals.add(new PhyPeripheral());
-        alPeripherals.add(new PhyPeripheral());
+        PhyPeripheral peripheral = new PhyPeripheral();
+        peripheral.setPid(10000004);
+        peripheral.setPval((int) counterIntenity.get());
+        alPeripherals.add(peripheral);
+        counterIntenity.addAndGet(20);
+        if (counterIntenity.addAndGet(10) >= 255)
+            counterIntenity.set(0);
+
         // set all thr has_updates flags to false;
 
         return new ResponseEntity<ArrayList<PhyPeripheral>>(alPeripherals, HttpStatus.OK);
@@ -61,11 +53,21 @@ public class SmartHomeHWDeviceController {
         return new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/received_trigger_from_peripherals", method = RequestMethod.POST)
+    public ResponseEntity<String> receivePeripheralTriggers(@RequestBody DevicePeripheralList devicePeripheralList) {
+
+        System.out.println("ESP is trying to Send triggers for devices ::" + devicePeripheralList);
+        //if(device is not registered already then register it after authenticating. )
+        //if user requested for some updates then get create one peripheral object and add it as a 1st element in arraylist.
+
+        return new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
+    }
+
     @RequestMapping(value = "/register_peripheral", method = RequestMethod.POST)
     public ResponseEntity<Integer> registerPeripheral(@RequestBody Device device) {
 
         System.out.println("ESP is trying to register_peripheral ::Parent Device:: " + device);
-        int regId = 10000002; // 8 digit id
+        int regId = 10000004; // 8 digit id
         //if(device is not registered already then register it after authenticating. )
         //if user requested for some updates then get create one peripheral object and add it as a 1st element in arraylist.
 
